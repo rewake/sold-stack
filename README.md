@@ -20,4 +20,13 @@ to the git repo because they contain potentially sensitive data.
 
 ### Initial Deployment
 
-...
+Please run the following commands to get the SOLD! STACK application
+up and running for the first time.
+
+<b>NOTE:</b> This method of running the application assumes you have docker running
+in your environment. If this is *NOT* the case, please contact me so
+we can discuss installation on your specific environment further.
+
+* `composer install`
+* `./vendor/bin/sail up -d`
+* `./vendor/bin/sail artisan ss:deploy -i`
