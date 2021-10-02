@@ -5,25 +5,25 @@
         <!-- Nav items -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="dashboard.html">
+                <a class="nav-link active" href="{{ route('dashboard') }}">
                     <i class="ni ni-tv-2 text-primary"></i>
                     <span class="nav-link-text">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="icons.html">
+                <a class="nav-link" href="{{ route('orders.index') }}">
                     <i class="ni ni-bag-17 text-orange"></i>
                     <span class="nav-link-text">Orders</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="map.html">
+                <a class="nav-link" href="{{ route('products.index') }}">
                     <i class="ni ni-tag text-primary"></i>
                     <span class="nav-link-text">Products</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="profile.html">
+                <a class="nav-link" href="{{ route('inventory.index') }}">
                     <i class="ni ni-check-bold text-green"></i>
                     <span class="nav-link-text">Inventory</span>
                 </a>
