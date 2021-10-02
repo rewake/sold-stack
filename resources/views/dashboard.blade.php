@@ -1,5 +1,9 @@
 <x-app-layout>
 
+    <x-slot name="dashboard_summary">
+        <x-dashboard.summary/>
+    </x-slot>
+
     <!-- Page content -->
     <div class="container-fluid mt--6">
         <div class="row">
