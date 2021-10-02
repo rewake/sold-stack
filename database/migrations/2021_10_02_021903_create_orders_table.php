@@ -16,17 +16,17 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained();
-            $table->text('street_address');
-            $table->text('apartment')->nullable();
-            $table->text('city');
-            $table->text('state');
+            $table->string('street_address'); // using string instead of text
+            $table->string('apartment')->nullable(); // using string instead of text
+            $table->string('city'); // using string instead of text
+            $table->string('state'); // using string instead of text
             $table->string('country_code');
             $table->text('zip');
             $table->string('phone_number');
-            $table->text('email');
+            $table->string('email'); // using string instead of text
             $table->string('name');
             $table->string('order_status');
-            $table->text('payment_ref')->nullable();
+            $table->string('payment_ref')->nullable(); // using string instead of text
             $table->string('transaction_id')->nullable();
             $table->integer('payment_amount_cents')->default(0);
             $table->integer('ship_charged_cents')->default(0);
@@ -35,21 +35,19 @@ class CreateOrdersTable extends Migration
             $table->integer('tax_total_cents')->default(0);
             $table->integer('total_cents')->default(0);
             $table->text('shipper_name')->nullable();
-            $table->text('tracking_number')->nullable();
+            $table->string('tracking_number')->nullable(); // using string instead of text
             $table->timestamp('payment_date')->nullable();
             $table->timestamp('shipped_date')->nullable();
             $table->timestamps();
 
-            $table->index([
-                'street_address',
-                'phone_number',
-                'email',
-                'name',
-                'order_status',
-                'payment_ref',
-                'transaction_id',
-                'tracking_number',
-            ]);
+            $table->index('street_address');
+            $table->index('phone_number');
+            $table->index('email');
+            $table->index('name');
+            $table->index('order_status');
+            $table->index('payment_ref');
+            $table->index('transaction_id');
+            $table->index('tracking_number');
         });
     }
 

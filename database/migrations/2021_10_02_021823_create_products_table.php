@@ -26,10 +26,8 @@ class CreateProductsTable extends Migration
             $table->text('note')->nullable();
             $table->timestamps();
 
-            $table->index([
-                'product_name',
-                'product_type',
-            ]);
+            $table->index('product_name');
+            $table->index('product_type');
         });
     }
 
