@@ -22,19 +22,19 @@ class DeploymentSeeder extends Seeder
         // however, I've tested import on all 4 CSVs and we "should" be able to safely
         // import the provided CSV files without issue.
         echo 'Importing Users... ';
-        Excel::import(UserImport::class, 'docs/data/users.csv');
+        Excel::import(new UserImport, 'docs/data/users.csv');
         echo 'Done.' . PHP_EOL;
 
         echo 'Importing Products... ';
-        Excel::import(ProductImport::class, 'docs/data/products.csv');
+        Excel::import(new ProductImport, 'docs/data/products.csv');
         echo 'Done.' . PHP_EOL;
 
         echo 'Importing Inventory... ';
-        Excel::import(InventoryImport::class, 'docs/data/inventory.csv');
+        Excel::import(new InventoryImport, 'docs/data/inventory.csv');
         echo 'Done.' . PHP_EOL;
 
         echo 'Importing Orders... ';
-        Excel::import(OrderImport::class, 'docs/data/orders.csv');
+        Excel::import(new OrderImport, 'docs/data/orders.csv');
         echo 'Done.' . PHP_EOL;
     }
 }
