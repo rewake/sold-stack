@@ -16,7 +16,7 @@ class CreateInventoryTable extends Migration
         Schema::create('inventory', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained();
-            $table->string('sku')->nullable()->unique();
+            $table->string('sku')->nullable();
             $table->integer('quantity')->default(0);
             $table->string('color')->nullable(); // using string instead of text
             $table->string('size')->nullable(); // using string instead of text
@@ -29,6 +29,10 @@ class CreateInventoryTable extends Migration
             $table->double('height')->default(0);
             $table->text('note')->nullable();
             $table->timestamps();
+
+            $table->index('sku');
+            $table->index('color');
+            $table->index('size');
         });
     }
 

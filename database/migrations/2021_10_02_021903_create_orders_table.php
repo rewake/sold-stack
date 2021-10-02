@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('product_id')->constrained();
             $table->string('street_address'); // using string instead of text
             $table->string('apartment')->nullable(); // using string instead of text
-            $table->string('city'); // using string instead of text
+            $table->string('city')->nullable(); // using string instead of text
             $table->string('state'); // using string instead of text
             $table->string('country_code');
             $table->text('zip');
@@ -28,7 +28,7 @@ class CreateOrdersTable extends Migration
             $table->string('order_status');
             $table->string('payment_ref')->nullable(); // using string instead of text
             $table->string('transaction_id')->nullable();
-            $table->integer('payment_amount_cents')->default(0);
+            $table->integer('payment_amt_cents')->default(0);
             $table->integer('ship_charged_cents')->default(0);
             $table->integer('ship_cost_cents')->default(0);
             $table->integer('subtotal_cents')->default(0);

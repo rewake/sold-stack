@@ -23,6 +23,9 @@ class AlterUsersTableToMatchImportStructure extends Migration
             $table->boolean('is_enabled')->after('billing_plan')->default(0);
             $table->timestamp('trial_starts_at')->after('is_enabled')->nullable();
             $table->timestamp('trial_ends_at')->after('trial_starts_at')->nullable();
+
+            $table->index('name');
+            $table->index('billing_plan');
         });
     }
 

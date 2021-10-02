@@ -10,3 +10,14 @@ navigate to the root project dir from a command terminal and run the following c
 * Build and run the docker container: `./vendor/bin/sail up`
 * Build and run the docker container (background): `./vendor/bin/sail up -d`
 * Turn the container off: `./vendor/bin/sail down`
+
+## Deployment
+
+### Setup
+
+* Please extract csv files to the `APP_ROOT/docs/data` directory. These files were not committed
+to the git repo because they contain potentially sensitive data.
+
+### Initial Deployment
+
+...
