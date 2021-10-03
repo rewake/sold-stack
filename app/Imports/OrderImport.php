@@ -41,7 +41,9 @@ class OrderImport implements ToModel, WithHeadingRow, WithBatchInserts
             'payment_date' => $row['payment_date'],
             'shipped_date' => $row['shipped_date'],
         ]))->forceFill([
-            'id' => $row['id']
+            'id' => $row['id'],
+            'created_at' => $row['created_at'],
+            'updated_at' => $row['updated_at'],
         ]);
     }
 

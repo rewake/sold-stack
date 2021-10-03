@@ -31,7 +31,7 @@ class InventoryImport implements ToModel, WithHeadingRow, WithBatchInserts
             'height' => $row['height'],
             'note' => $row['note'],
         ]))->forceFill([
-            'id' => $row['id']
+            'id' => $row['id'],
         ]);
     }
 
