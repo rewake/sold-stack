@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsController;
@@ -31,6 +32,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
     Route::resource('orders', OrdersController::class);
     Route::resource('products', ProductsController::class);
     Route::resource('inventory', InventoryController::class);
+    Route::resource('account', AccountController::class);
 
 });
 
