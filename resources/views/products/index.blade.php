@@ -15,54 +15,58 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table align-items-center table-flush" id="datatable-basic">
-                            <thead class="thead-light">
-                            <tr>
-                                <th scope="col" class="sort" data-sort="name">Project</th>
-                                <th scope="col" class="sort" data-sort="budget">Budget</th>
-                                <th scope="col" class="sort" data-sort="status">Status</th>
-                                <th scope="col">Users</th>
-                                <th scope="col" class="sort" data-sort="completion">Completion</th>
-                                <th scope="col"></th>
-                            </tr>
-                            </thead>
-                            <tbody class="list">
-                            <tr>
-                                <td scope="row">
-asdf
-                                </td>
-                                <td class="budget">
-                                    $2500 USD
-                                </td>
-                                <td>
-                                    asf
-                                </td>
-                                <td>
-                                    asdf
-                                </td>
-                                <td>
-                                    asdf
-                                </td>
-                                <td class="text-right">
-                                    asf
-                                </td>
-                            </tr>
+                        <div>
+                            <table class="table align-items-center">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th scope="col" class="sort" data-sort="name">Name</th>
+                                    <th scope="col" class="sort" data-sort="budget">Style</th>
+                                    <th scope="col" class="sort" data-sort="status">Brand</th>
+                                    <th scope="col">SKU(s)</th>
+                                    <th scope="col"></th>
+                                </tr>
+                                </thead>
+                                <tbody class="list">
+{{--                                    @dump($products)--}}
+                                @foreach($products as $product)
+                                <tr>
+                                    <th scope="row">
+                                        <span class="name mb-0 text-sm">{{ $product->product_name }}</span>
+                                    </th>
+                                    <td>{{ $product->style }}</td>
+                                    <td>{{ $product->brand }}</td>
+                                    <td>
+                                        @foreach($product->inventory as $inventory)
+                                            <button type="button" class="btn btn-outline-primary btn-sm" disabled>{{ $inventory->sku }}</button>
+                                        @endforeach
+                                    </td>
+                                    <td class="text-right">
+                                        <button type="button" class="btn btn-primary">Edit</button>
+                                        <button type="button" class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
 
-                            </tbody>
-                        </table>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="float-right">
+                            {{ $products->links() }}
+                        </div>
                     </div>
 
                 </div>
             </div>
-        </div>
-    </div>
 
-<x-slot name="scripts">
-    <script type="application/javascript">
-        $(document).ready(function() {
-            $('#datatable-basic').DataTable();
-        });
-    </script>
-</x-slot>
+            <x-slot name="scripts">
+                <script type="application/javascript">
+                    $(document).ready(function () {
+                        $('#datatable-basic').DataTable();
+                    });
+                </script>
+            </x-slot>
 
 </x-app-layout>
