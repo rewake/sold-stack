@@ -2,18 +2,21 @@
 
 namespace App\View\Components\Dashboard;
 
+use App\Services\DashboardService;
 use Illuminate\View\Component;
 
 class Summary extends Component
 {
+    public $summaryData;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(DashboardService $dashboardService)
     {
-        //
+        $this->summaryData = $dashboardService->summaryData();
     }
 
     /**
