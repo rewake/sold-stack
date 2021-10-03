@@ -30,8 +30,8 @@
         <!-- Brand -->
         <div class="sidenav-header align-items-center mb-1" style="background: #f6f9fc;
         background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(177,189,237,.3) 100%);">
-            <a href="javascript:void(0)">
-                <img src="{{ asset('/assets/img/brand/SoldStack-small.svg') }}" class="px-3 py-3" alt="...">
+            <a href="{{ route(('dashboard')) }}">
+                <img src="{{ asset('/assets/img/brand/SoldStack-small.svg') }}" class="px-3 py-3" alt="SOLD! STACK">
             </a>
         </div>
 

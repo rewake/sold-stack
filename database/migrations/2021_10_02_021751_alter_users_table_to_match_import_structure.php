@@ -15,7 +15,7 @@ class AlterUsersTableToMatchImportStructure extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('superadmin')->after('remember_token')->default(0);
-            $table->string('shop_name')->after('superadmin');
+            $table->string('shop_name')->after('superadmin')->nullable();
             $table->string('card_brand')->after('shop_name')->nullable();
             $table->string('card_last_four')->after('card_brand')->nullable();
             $table->string('shop_domain')->after('card_last_four')->nullable();
