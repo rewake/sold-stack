@@ -10,14 +10,14 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-10">
-                                <h3 class="mb-0">Products</h3>
+                                <h2 class="mb-0">Products</h2>
                                 <p class="text-sm mb-0">
                                     This is a list of your current products. Please use the filters below to navigate this list.
                                 </p>
                             </div>
 
-                            <div class="col-2 text-right">
-                                <a href="{{ route('products.create') }}" class="btn btn-success" cl>Add Product</a>
+                            <div class="col-2 text-right mt-1">
+                                <a href="{{ route('products.create') }}" class="btn btn-success">Add Product</a>
                             </div>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                             <div class="col-6 pt-2 text-primary">
                                 Page {{ $products->currentPage() }} of {{ $products->lastPage() }} <span class="text-light">/</span>
                                 {{ $products->perPage() }} per page <span class="text-light">/</span>
-                                {{ number_format($products->total()) }} total
+                                {{ number_format($products->total()) }} product(s) total
                             </div>
                             <div class="col-6">
                                 <div class="float-right mb--3">
@@ -44,17 +44,17 @@
                             <table class="table align-items-center">
                                 <thead class="thead-light">
                                 <tr>
-                                    <th scope="col" class="sort" data-sort="name">Name</th>
-                                    <th scope="col" class="sort" data-sort="budget">Style</th>
-                                    <th scope="col" class="sort" data-sort="status">Brand</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Style</th>
+                                    <th scope="col">Brand</th>
                                     <th scope="col">SKU(s)</th>
                                     <th scope="col"></th>
                                 </tr>
                                 </thead>
                                 <tbody class="list">
 
-                                <form method="get" action="#">
                                 <thead class="thead-light">
+                                <form method="get" action="#">
                                 <tr>
                                     <th>
                                         <input class="form-control form-control-sm" name="product_name" type="text" value="{{ request('product_name') }}"/>
@@ -68,11 +68,11 @@
                                     <th></th>
                                     <th class="text-right">
                                         <button class="btn btn-sm btn-outline-primary active" type="submit">Apply Filter(s)</button>
-                                        <a href="{{ route('products.index') }}" class="btn btn-sm btn-outline-primary active">Clear Filter(s)</a>
+                                        <a href="{{ route('products.index') }}" class="btn btn-sm btn-outline-primary active">Clear All</a>
                                     </th>
                                 </tr>
-                                </thead>
                                 </form>
+                                </thead>
 
                                 @foreach($products as $product)
                                 <tr>
@@ -81,9 +81,9 @@
                                     </th>
                                     <td>{{ $product->style }}</td>
                                     <td>{{ $product->brand }}</td>
-                                    <td>
+                                    <td class="align-middle">
                                         @foreach($product->inventory as $inventory)
-                                            <button type="button" class="btn btn-outline-primary btn-sm" disabled>{{ $inventory->sku }}</button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm float-left mb-1" disabled>{{ $inventory->sku }}</button>
                                         @endforeach
                                     </td>
                                     <td class="text-right">
@@ -104,7 +104,7 @@
                             <div class="col-6 pt-2 text-primary">
                                 Page {{ $products->currentPage() }} of {{ $products->lastPage() }} <span class="text-light">/</span>
                                 {{ $products->perPage() }} per page <span class="text-light">/</span>
-                                {{ number_format($products->total()) }} total
+                                {{ number_format($products->total()) }} product(s) total
                             </div>
                             <div class="col-6">
                                 <div class="float-right mb--3">

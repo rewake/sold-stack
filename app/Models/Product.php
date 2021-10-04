@@ -78,6 +78,15 @@ class Product extends Model
     {
         foreach ($filters as $field => $value) {
             if (!empty($value)) {
+                $query->where($field, '=', $value);
+            }
+        }
+    }
+
+    public function scopeFilterLike($query, array $filters)
+    {
+        foreach ($filters as $field => $value) {
+            if (!empty($value)) {
                 $query->where($field, 'like', "%{$value}%");
             }
         }

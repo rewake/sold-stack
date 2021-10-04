@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inventory;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class InventoryController extends Controller
@@ -13,7 +15,25 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        return view('inventory.index');
+        $filters = request()->only([
+            'size',
+        ]);
+
+        $filterLike = request()->only([
+            'product_name',
+            'sku',
+            'color',
+        ]);
+
+        return view('inventory.index', [
+            'products' => Product::query()
+                ->join('inventory', 'products.id', '=', 'inventory.product_id')
+                ->whereUserId(auth()->id())
+                ->orderBy('product_name')
+                ->filter($filters)
+                ->filterLike($filterLike)
+                ->paginate(env('PAGINATION_PER_PAGE'))
+        ]);
     }
 
     /**

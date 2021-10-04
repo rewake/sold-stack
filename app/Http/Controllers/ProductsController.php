@@ -14,7 +14,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $filters = request()->only([
+        $filterLike = request()->only([
             'product_name',
             'style',
             'brand',
@@ -22,9 +22,9 @@ class ProductsController extends Controller
 
         return view('products.index', [
             'products' => Product::whereUserId(auth()->id())
-                ->filter($filters)
+                ->filterLike($filterLike)
                 ->with('inventory')
-                ->paginate(20)
+                ->paginate(env('PAGINATION_PER_PAGE')) // TODO: should be routed to a config
         ]);
     }
 

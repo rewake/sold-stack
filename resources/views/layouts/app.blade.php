@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>{{ $pageName = "Dashboard" }} :: {{ env('APP_NAME') }}</title>
+    <title>{{ env('APP_NAME') }}</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('/assets/img/brand/favicon.png') }}" type="image/png">
     <!-- Fonts -->
@@ -61,14 +61,14 @@
 <script src="{{ asset('/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
 <script src="{{ asset('/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
 <!-- Datatables -->
-<script src="{{ asset('/assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('/assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('/assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('/assets/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('/assets/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('/assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-<script src="{{ asset('/assets/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('/assets/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+{{--<script src="{{ asset('/assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>--}}
+{{--<script src="{{ asset('/assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>--}}
+{{--<script src="{{ asset('/assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>--}}
+{{--<script src="{{ asset('/assets/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>--}}
+{{--<script src="{{ asset('/assets/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>--}}
+{{--<script src="{{ asset('/assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>--}}
+{{--<script src="{{ asset('/assets/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>--}}
+{{--<script src="{{ asset('/assets/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>--}}
 <!-- Optional JS -->
 <script src="{{ asset('/assets/vendor/chart.js/dist/Chart.min.js') }}"></script>
 <script src="{{ asset('/assets/vendor/chart.js/dist/Chart.extension.js') }}"></script>
