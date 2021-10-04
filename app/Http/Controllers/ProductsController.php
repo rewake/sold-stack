@@ -14,8 +14,15 @@ class ProductsController extends Controller
      */
     public function index()
     {
+        $filters = request()->only([
+            'product_name',
+            'style',
+            'brand',
+        ]);
+
         return view('products.index', [
             'products' => Product::whereUserId(auth()->id())
+                ->filter($filters)
                 ->with('inventory')
                 ->paginate(20)
         ]);

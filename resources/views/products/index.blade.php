@@ -5,14 +5,39 @@
         <div class="row">
             <div class="col">
                 <div class="card">
+
                     <!-- Card header -->
                     <div class="card-header">
-                        <h3 class="mb-0">Datatable</h3>
-                        <p class="text-sm mb-0">
-                            This is an exmaple of datatable using the well known datatables.net plugin. This is a
-                            minimal setup in order to get started fast.
-                        </p>
+                        <div class="row">
+                            <div class="col-10">
+                                <h3 class="mb-0">Products</h3>
+                                <p class="text-sm mb-0">
+                                    This is a list of your current products. Please use the filters below to navigate this list.
+                                </p>
+                            </div>
+
+                            <div class="col-2 text-right">
+                                <a href="{{ route('products.create') }}" class="btn btn-success" cl>Add Product</a>
+                            </div>
+                        </div>
                     </div>
+
+                    @if($products->hasPages())
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6 pt-2 text-primary">
+                                Page {{ $products->currentPage() }} of {{ $products->lastPage() }} <span class="text-light">/</span>
+                                {{ $products->perPage() }} per page <span class="text-light">/</span>
+                                {{ number_format($products->total()) }} total
+                            </div>
+                            <div class="col-6">
+                                <div class="float-right mb--3">
+                                    {{ $products->links() }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
 
                     <div class="table-responsive">
                         <div>
@@ -27,7 +52,28 @@
                                 </tr>
                                 </thead>
                                 <tbody class="list">
-{{--                                    @dump($products)--}}
+
+                                <form method="get" action="#">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th>
+                                        <input class="form-control form-control-sm" name="product_name" type="text" value="{{ request('product_name') }}"/>
+                                    </th>
+                                    <th>
+                                        <input class="form-control form-control-sm" name="style" type="text" value="{{ request('style') }}"/>
+                                    </th>
+                                    <th>
+                                        <input class="form-control form-control-sm" name="brand" type="text" value="{{ request('brand') }}"/>
+                                    </th>
+                                    <th></th>
+                                    <th class="text-right">
+                                        <button class="btn btn-sm btn-outline-primary active" type="submit">Apply Filter(s)</button>
+                                        <a href="{{ route('products.index') }}" class="btn btn-sm btn-outline-primary active">Clear Filter(s)</a>
+                                    </th>
+                                </tr>
+                                </thead>
+                                </form>
+
                                 @foreach($products as $product)
                                 <tr>
                                     <th scope="row">
@@ -52,21 +98,32 @@
                         </div>
                     </div>
 
+                    @if($products->hasPages())
                     <div class="card-footer">
-                        <div class="float-right">
-                            {{ $products->links() }}
+                        <div class="row">
+                            <div class="col-6 pt-2 text-primary">
+                                Page {{ $products->currentPage() }} of {{ $products->lastPage() }} <span class="text-light">/</span>
+                                {{ $products->perPage() }} per page <span class="text-light">/</span>
+                                {{ number_format($products->total()) }} total
+                            </div>
+                            <div class="col-6">
+                                <div class="float-right mb--3">
+                                    {{ $products->links() }}
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    @endif
 
                 </div>
             </div>
 
-            <x-slot name="scripts">
-                <script type="application/javascript">
-                    $(document).ready(function () {
-                        $('#datatable-basic').DataTable();
-                    });
-                </script>
-            </x-slot>
+{{--            <x-slot name="scripts">--}}
+{{--                <script type="application/javascript">--}}
+{{--                    $(document).ready(function () {--}}
+{{--                        $('#datatable-basic').DataTable();--}}
+{{--                    });--}}
+{{--                </script>--}}
+{{--            </x-slot>--}}
 
 </x-app-layout>

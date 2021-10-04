@@ -5,25 +5,25 @@
         <!-- Nav items -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="{{ route('dashboard') }}">
+                <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                     <i class="ni ni-tv-2 text-primary"></i>
                     <span class="nav-link-text">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('orders.index') }}">
+                <a class="nav-link {{ request()->routeIs('orders*') ? 'active' : '' }}" href="{{ route('orders.index') }}">
                     <i class="ni ni-bag-17 text-orange"></i>
                     <span class="nav-link-text">Orders</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('products.index') }}">
+                <a class="nav-link {{ request()->routeIs('products*') ? 'active' : '' }}" href="{{ route('products.index') }}">
                     <i class="ni ni-tag text-primary"></i>
                     <span class="nav-link-text">Products</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('inventory.index') }}">
+                <a class="nav-link {{ request()->routeIs('inventory*') ? 'active' : '' }}" href="{{ route('inventory.index') }}">
                     <i class="ni ni-check-bold text-green"></i>
                     <span class="nav-link-text">Inventory</span>
                 </a>

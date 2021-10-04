@@ -73,4 +73,13 @@ class Product extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        foreach ($filters as $field => $value) {
+            if (!empty($value)) {
+                $query->where($field, 'like', "%{$value}%");
+            }
+        }
+    }
 }
