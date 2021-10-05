@@ -13,11 +13,6 @@ navigate to the root project dir from a command terminal and run the following c
 
 ## Deployment
 
-### Setup
-
-* Please extract csv files to the `APP_ROOT/docs/data` directory. These files were not committed
-to the git repo because they contain potentially sensitive data.
-
 ### Initial Deployment
 
 Please run the following commands to get the SOLD! STACK application
