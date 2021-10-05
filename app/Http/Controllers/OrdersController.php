@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -13,7 +14,28 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        return view('orders.index');
+        $filters = request()->only([
+            'size',
+        ]);
+
+        $filterLike = request()->only([
+            'customer',
+            'email',
+            'product_name',
+            'color',
+            'order_status',
+        ]);
+
+        // TODO: double check relationships to ensure we're not duplicating rows
+        return view('orders.index', [
+            'orders' => Order::whereUserId(auth()->id())
+                ->join('products', 'orders.product_id', '=', 'products.id')
+                ->join('inventory', 'inventory.product_id', '=', 'products.id')
+                ->filter($filters)
+                ->filterLike($filterLike)
+                ->orderBy('name')
+                ->paginate()
+        ]);
     }
 
     /**

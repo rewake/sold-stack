@@ -26,6 +26,7 @@ class ProductsController extends Controller
             'products' => Product::whereUserId(auth()->id())
                 ->filterLike($filterLike)
                 ->with('inventory')
+                ->orderBy('product_name')
                 ->paginate(env('PAGINATION_PER_PAGE')) // TODO: should be routed to a config
         ]);
     }

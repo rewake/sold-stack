@@ -32,6 +32,7 @@ class InventoryController extends Controller
                 ->orderBy('product_name')
                 ->filter($filters)
                 ->filterLike($filterLike)
+                ->orderBy('product_name')
                 ->paginate(env('PAGINATION_PER_PAGE'))
         ]);
     }
