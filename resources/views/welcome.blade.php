@@ -40,7 +40,7 @@
                     <h1 class="text-white">Welcome!</h1>
                     <p class="text-lead text-white">I hope you enjoy my Code Test Project!</p>
                     <p class="text-lead text-white">
-                        Please use any user information from the provided CSV data to login, or follow the link below the Sign In form to Create a New Account.
+                        Please use any user information from the provided CSV data to login.
                     </p>
 
                 </div>
