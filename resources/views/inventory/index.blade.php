@@ -17,7 +17,7 @@
                             </div>
 
                             <div class="col-3 text-right mt-1">
-                                <a href="{{ route('inventory.create') }}" class="btn btn-success" disabled>Add Inventory Record</a>
+                                <a href="{{-- route('inventory.create') --}}" class="btn btn-success disabled" disabled>Add Inventory Record</a>
                             </div>
                         </div>
                     </div>

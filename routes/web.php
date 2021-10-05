@@ -29,9 +29,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
         return view('dashboard');
     })->name('dashboard');
 
-    Route::resource('orders', OrdersController::class);
+    Route::resource('orders', OrdersController::class)->only('index');
     Route::resource('products', ProductsController::class);
-    Route::resource('inventory', InventoryController::class);
+    Route::resource('inventory', InventoryController::class)->only('index');
     Route::resource('account', AccountController::class);
 
 });
