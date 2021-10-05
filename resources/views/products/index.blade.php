@@ -6,21 +6,31 @@
             <div class="col">
                 <div class="card">
 
-                    <!-- Card header -->
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-10">
-                                <h2 class="mb-0">Products</h2>
-                                <p class="text-sm mb-0">
-                                    This is a list of your current products. Please use the filters below to navigate this list.
-                                </p>
-                            </div>
+                <!-- Card header -->
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-9">
+                            <h2 class="mb-0">Products</h2>
+                            <p class="text-sm mb-0">
+                            This is a list of your current products. Please use the filters below to navigate this list.
+                            </p>
+                        </div>
 
-                            <div class="col-2 text-right mt-1">
-                                <a href="{{ route('products.create') }}" class="btn btn-success">Add Product</a>
-                            </div>
+                        <div class="col-3 text-right mt-1">
+                            <a href="{{ route('products.create') }}" class="btn btn-success">Add Product</a>
                         </div>
                     </div>
+                </div>
+
+                @if(Session::has('success'))
+                    <div class="alert alert-success alert-dismissible fade show mt-0 role="alert">
+                        <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+                        <span class="alert-text"><strong>Success!</strong> {{ Session::get('success') }}</span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
 
                     @if($products->hasPages())
                     <div class="card-body">
@@ -82,13 +92,15 @@
                                     <td>{{ $product->style }}</td>
                                     <td>{{ $product->brand }}</td>
                                     <td class="align-middle">
-                                        @foreach($product->inventory as $inventory)
-                                            <button type="button" class="btn btn-outline-primary btn-sm float-left mb-1" disabled>{{ $inventory->sku }}</button>
-                                        @endforeach
+                                        @forelse($product->inventory as $inventory)
+                                            <a href="{{ route('inventory.index') }}?sku={{ $inventory->sku }}" class="btn btn-outline-primary btn-sm float-left mb-1">{{ $inventory->sku }}</a>
+                                        @empty
+                                            <!-- create sku button -->
+                                        @endforelse
                                     </td>
                                     <td class="text-right">
-                                        <button type="button" class="btn btn-primary">Edit</button>
-                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <button type="button" class="btn btn-primary" data-id="{{ $product->id }}">Edit</button>
+                                        <button type="button" class="btn btn-danger" data-id="{{ $product->id }}">Delete</button>
                                     </td>
                                 </tr>
                                 @endforeach

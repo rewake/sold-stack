@@ -57,6 +57,7 @@ class Product extends Model
         'product_type',
         'shipping_price',
         'note',
+        'user_id',
     ];
 
     public function user(): HasOne

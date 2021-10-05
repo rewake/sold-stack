@@ -9,15 +9,15 @@
                     <!-- Card header -->
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col-9">
                                 <h2 class="mb-0">Inventory</h2>
                                 <p class="text-sm mb-0">
                                     This is a list of your current inventory. Please use the filters below to navigate this list.
                                 </p>
                             </div>
 
-                            <div class="col-2 text-right mt-1">
-                                <a href="{{ route('inventory.create') }}" class="btn btn-success">Add Product</a>
+                            <div class="col-3 text-right mt-1">
+                                <a href="{{ route('inventory.create') }}" class="btn btn-success">Add Inventory Record</a>
                             </div>
                         </div>
                     </div>
@@ -90,7 +90,9 @@
                                         <th scope="row">
                                             <span class="name mb-0 text-sm">{{ $product->product_name }}</span>
                                         </th>
-                                        <td>{{ $product->sku }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-primary btn-sm float-left mb-1" disabled>{{ $product->sku }}</button>
+                                        </td>
                                         <td class="text-right">{{ number_format($product->quantity) }}</td>
                                         <td>{{ $product->color }}</td>
                                         <td>{{ $product->size }}</td>
