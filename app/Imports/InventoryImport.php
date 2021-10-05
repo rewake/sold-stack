@@ -5,9 +5,10 @@ namespace App\Imports;
 use App\Models\Inventory;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class InventoryImport implements ToModel, WithHeadingRow, WithBatchInserts
+class InventoryImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading
 {
     /**
     * @param array $row
@@ -36,6 +37,11 @@ class InventoryImport implements ToModel, WithHeadingRow, WithBatchInserts
     }
 
     public function batchSize(): int
+    {
+        return 1000;
+    }
+
+    public function chunkSize(): int
     {
         return 1000;
     }
