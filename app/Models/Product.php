@@ -62,7 +62,7 @@ class Product extends Model
     ];
 
     protected $casts = [
-        'shipping_price' => MoneyCast::class
+//        'shipping_price' => MoneyCast::class
     ];
 
     public function user(): HasOne

@@ -103,12 +103,12 @@ class Order extends Model
     protected $casts = [
         'payment_date' => 'datetime',
         'shipped_date' => 'datetime',
-        'payment_amount_cents' => MoneyCast::class,
-        'ship_charged_cents' => MoneyCast::class,
-        'ship_cost_cents' => MoneyCast::class,
-        'subtotal_cents' => MoneyCast::class,
-        'tax_total_cents' => MoneyCast::class,
-        'total_cents' => MoneyCast::class,
+//        'payment_amount_cents' => MoneyCast::class,
+//        'ship_charged_cents' => MoneyCast::class,
+//        'ship_cost_cents' => MoneyCast::class,
+//        'subtotal_cents' => MoneyCast::class,
+//        'tax_total_cents' => MoneyCast::class,
+//        'total_cents' => MoneyCast::class,
     ];
 
     public function products(): HasMany

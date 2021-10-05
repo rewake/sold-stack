@@ -73,9 +73,9 @@ class Inventory extends Model
     ];
 
     protected $casts = [
-        'price_cents' => MoneyCast::class,
-        'sale_price_cents' => MoneyCast::class,
-        'cost_cents' => MoneyCast::class,
+//        'price_cents' => MoneyCast::class,
+//        'sale_price_cents' => MoneyCast::class,
+//        'cost_cents' => MoneyCast::class,
     ];
 
     public function product(): HasOne

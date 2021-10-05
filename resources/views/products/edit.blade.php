@@ -72,7 +72,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">$</span>
                                     </div>
-                                    <input class="form-control @error('shipping_price') border-danger @enderror" type="number" step="0.01" value="{{ old('shipping_price') ?? $product->shipping_price }}" name="shipping_price" id="shipping_price">
+                                    <input class="form-control @error('shipping_price') border-danger @enderror" type="number" step="0.01" value="{{ number_format( old('shipping_price') ?? $product->shipping_price / 100, 2) }}" name="shipping_price" id="shipping_price">
                                 </div>
                                 @error('shipping_price')
                                 <div class="text-danger text-sm">Please provide a valid shipping price.</div>
