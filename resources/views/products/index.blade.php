@@ -99,8 +99,9 @@
                                         @endforelse
                                     </td>
                                     <td class="text-right">
-                                        <button type="button" class="btn btn-primary" data-id="{{ $product->id }}">Edit</button>
-                                        <button type="button" class="btn btn-danger" data-id="{{ $product->id }}">Delete</button>
+                                        <button type="button" class="btn btn-primary" data-product-id="{{ $product->id }}">Edit</button>
+                                        <button type="button" class="btn btn-danger" data-url="{{ route('products.destroy', $product->id) }}"
+                                                data-toggle="modal" data-target="#modal-notification">Delete</button>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -130,12 +131,51 @@
                 </div>
             </div>
 
-{{--            <x-slot name="scripts">--}}
-{{--                <script type="application/javascript">--}}
-{{--                    $(document).ready(function () {--}}
-{{--                        $('#datatable-basic').DataTable();--}}
-{{--                    });--}}
-{{--                </script>--}}
-{{--            </x-slot>--}}
+    <x-slot name="scripts">
+        <script type="application/javascript">
+            $(document).ready(function () {
+                // Setup delete form
+                $('#modal-notification').on('show.bs.modal', function (e) {
+                    $('#delete-product-form').attr('action', $(e.relatedTarget).data('url'));
+                })
+                // Clear delete form
+                $('#modal-notification').on('hide.bs.modal', function (e) {
+                    $('#delete-product-form').attr('action', '');
+                })
+            });
+        </script>
+    </x-slot>
+
+    <!-- Delete Item Modal -->
+    <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+        <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+            <div class="modal-content bg-gradient-danger">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="py-3 text-center">
+                        <i class="ni ni-bell-55 ni-3x"></i>
+                        <h4 class="heading mt-4">Are you sure you want to delete this product?</h4>
+                        <p>This action cannot be undone.</p>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <form action="" id="delete-product-form" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-white">DELETE PRODUCT</button>
+                    </form>
+                    <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 </x-app-layout>

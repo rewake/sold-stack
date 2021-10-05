@@ -96,6 +96,8 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Product::destroy($id);
+        Session::flash('success', "Product deleted successfully!");
+        return redirect()->route('products.index');
     }
 }
