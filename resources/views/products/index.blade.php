@@ -99,7 +99,7 @@
                                         @endforelse
                                     </td>
                                     <td class="text-right">
-                                        <button type="button" class="btn btn-primary" data-product-id="{{ $product->id }}">Edit</button>
+                                        <a href="{{ route('products.edit', $product->id) }}" type="button" class="btn btn-primary" data-product-id="{{ $product->id }}">Edit</a>
                                         <button type="button" class="btn btn-danger" data-url="{{ route('products.destroy', $product->id) }}"
                                                 data-toggle="modal" data-target="#modal-notification">Delete</button>
                                     </td>

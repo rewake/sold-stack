@@ -96,13 +96,7 @@
                 </form>
 
             </div>
-
-            <x-slot name="scripts">
-                <script type="application/javascript">
-                    $(document).ready(function () {
-                        $('#datatable-basic').DataTable();
-                    });
-                </script>
-            </x-slot>
+        </div>
+    </div>
 
 </x-app-layout>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\MoneyCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -69,6 +70,12 @@ class Inventory extends Model
         'width',
         'height',
         'note',
+    ];
+
+    protected $casts = [
+        'price_cents' => MoneyCast::class,
+        'sale_price_cents' => MoneyCast::class,
+        'cost_cents' => MoneyCast::class,
     ];
 
     public function product(): HasOne

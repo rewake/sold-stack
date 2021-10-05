@@ -49,7 +49,6 @@ class ProductsController extends Controller
     public function store(ProductRequest $request)
     {
         Product::create($request->validated());
-
         Session::flash('success', "Product created successfully!");
         return redirect()->route('products.index');
     }
@@ -73,7 +72,9 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('products.edit', [
+            'product' => Product::findOrFail($id)
+        ]);
     }
 
     /**
@@ -83,9 +84,11 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-        //
+        Product::findOrFail($id)->update($request->validated());
+        Session::flash('success', "Product updated successfully!");
+        return redirect()->route('products.index');
     }
 
     /**

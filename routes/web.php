@@ -30,7 +30,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
     })->name('dashboard');
 
     Route::resource('orders', OrdersController::class)->only('index');
-    Route::resource('products', ProductsController::class);
+    Route::resource('products', ProductsController::class)->except('show');
     Route::resource('inventory', InventoryController::class)->only('index');
     Route::resource('account', AccountController::class);
 

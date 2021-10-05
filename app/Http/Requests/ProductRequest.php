@@ -30,7 +30,7 @@ class ProductRequest extends FormRequest
             'brand' => 'nullable|string|max:255',
             'url' => 'nullable|string',
             'product_type' => 'nullable|string|max:255',
-            'shipping_price' => 'nullable|integer',
+            'shipping_price' => 'nullable|numeric',
             'note' => 'nullable|string',
             'user_id' => 'required|exists:users,id'
         ];
@@ -39,7 +39,7 @@ class ProductRequest extends FormRequest
     public function prepareForValidation()
     {
         $this->merge([
-            'shipping_price' => round($this->shipping_price * 100),
+            'shipping_price' => $this->shipping_price ?? 0,
             'user_id' => auth()->id(),
         ]);
     }

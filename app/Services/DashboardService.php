@@ -33,7 +33,7 @@ class DashboardService
         return Cache::remember('totalSalesAmount-' . $userId, $this->default_cache_ttl, function () use ($userId) {
             return Order::join('products', 'orders.product_id', '=', 'products.id')
                 ->whereUserId($userId)
-                ->sum('total_cents') / 100;
+                ->sum('total_cents');
         });
     }
 
@@ -42,7 +42,7 @@ class DashboardService
         return Cache::remember('avgOrderAmount-' . $userId, $this->default_cache_ttl, function () use ($userId) {
             return Order::join('products', 'orders.product_id', '=', 'products.id')
                 ->whereUserId($userId)
-                ->avg('total_cents') / 100;
+                ->avg('total_cents');
         });
     }
 }
