@@ -10,41 +10,39 @@ class DashboardService
 {
     public $default_cache_ttl = 600;
 
-    public function summaryData()
+    public function summaryData($userId)
     {
         return [
-            'totalOrderCount' => $this->totalOrderCount(),
-            'totalSalesAmount' => $this->totalSalesAmount(),
-            'avgOrderAmount' => $this->avgOrderAmount(),
-            'totalUserCount' => $this->totalUserCount(),
+            'totalOrderCount' => $this->totalOrderCount($userId),
+            'totalSalesAmount' => $this->totalSalesAmount($userId),
+            'avgOrderAmount' => $this->avgOrderAmount($userId),
         ];
     }
 
-    public function totalOrderCount()
+    public function totalOrderCount($userId)
     {
-        return Cache::remember('totalOrderCount', $this->default_cache_ttl, function () {
-            return Order::count();
+        return Cache::remember('totalOrderCount-' . $userId, $this->default_cache_ttl, function () use ($userId) {
+            return Order::join('products', 'orders.product_id', '=', 'products.id')
+                ->whereUserId($userId)
+                ->count();
         });
     }
 
-    public function totalSalesAmount()
+    public function totalSalesAmount($userId)
     {
-        return Cache::remember('totalSalesAmount', $this->default_cache_ttl, function () {
-            return Order::sum('total_cents') / 100;
+        return Cache::remember('totalSalesAmount-' . $userId, $this->default_cache_ttl, function () use ($userId) {
+            return Order::join('products', 'orders.product_id', '=', 'products.id')
+                ->whereUserId($userId)
+                ->sum('total_cents') / 100;
         });
     }
 
-    public function avgOrderAmount()
+    public function avgOrderAmount($userId)
     {
-        return Cache::remember('avgOrderAmount', $this->default_cache_ttl, function () {
-            return Order::avg('total_cents') / 100;
-        });
-    }
-
-    public function totalUserCount()
-    {
-        return Cache::remember('totalUserCount', $this->default_cache_ttl, function () {
-            return User::count();
+        return Cache::remember('avgOrderAmount-' . $userId, $this->default_cache_ttl, function () use ($userId) {
+            return Order::join('products', 'orders.product_id', '=', 'products.id')
+                ->whereUserId($userId)
+                ->avg('total_cents') / 100;
         });
     }
 }

@@ -16,7 +16,7 @@ class Summary extends Component
      */
     public function __construct(DashboardService $dashboardService)
     {
-        $this->summaryData = $dashboardService->summaryData();
+        $this->summaryData = $dashboardService->summaryData(auth()->id());
     }
 
     /**
