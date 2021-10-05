@@ -63,7 +63,7 @@
                                 <form method="get" action="#">
                                     <tr>
                                         <th>
-                                            <input class="form-control form-control-sm" name="customer" type="text" value="{{ request('customer') }}"/>
+                                            <input class="form-control form-control-sm" name="name" type="text" value="{{ request('name') }}"/>
                                         </th>
                                         <th>
                                             <input class="form-control form-control-sm" name="email" type="text" value="{{ request('email') }}"/>
@@ -92,7 +92,7 @@
                                 </form>
                                 </thead>
 
-                                @foreach($orders as $order)
+                                @forelse($orders as $order)
 
                                     <tr>
                                         <th scope="row">
@@ -112,7 +112,13 @@
                                             <button type="button" class="btn btn-danger" disabled>Delete</button>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                    @empty
+                                    <tr>
+                                        <td colspan="11" class="text-center">
+                                            No Records Found
+                                        </td>
+                                    </tr>
+                                    @endforelse
                                     </tbody>
                             </table>
 

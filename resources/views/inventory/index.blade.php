@@ -84,7 +84,7 @@
                                 </form>
                                 </thead>
 
-                                @foreach($products as $product)
+                                @forelse($products as $product)
 
                                     <tr>
                                         <th scope="row">
@@ -103,7 +103,13 @@
                                             <button type="button" class="btn btn-danger" disabled>Delete</button>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="8" class="text-center">
+                                            No Records Found
+                                        </td>
+                                    </tr>
+                                @endforelse
                                     </tbody>
                             </table>
 

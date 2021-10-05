@@ -84,7 +84,7 @@
                                 </form>
                                 </thead>
 
-                                @foreach($products as $product)
+                                @forelse($products as $product)
                                 <tr>
                                     <th scope="row">
                                         <span class="name mb-0 text-sm">{{ $product->product_name }}</span>
@@ -104,7 +104,13 @@
                                                 data-toggle="modal" data-target="#modal-notification">Delete</button>
                                     </td>
                                 </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="text-center">
+                                            No Records Found
+                                        </td>
+                                    </tr>
+                                @endforelse
                                 </tbody>
                             </table>
 

@@ -19,7 +19,7 @@ class OrdersController extends Controller
         ]);
 
         $filterLike = request()->only([
-            'customer',
+            'name',
             'email',
             'product_name',
             'color',
