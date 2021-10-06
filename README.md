@@ -23,5 +23,6 @@ in your environment. If this is *NOT* the case, please contact me so
 we can discuss installation on your specific environment further.
 
 * `composer install`
+* `cp .env.example .env`
 * `./vendor/bin/sail up -d`
 * `./vendor/bin/sail artisan ss:deploy -i`
