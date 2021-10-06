@@ -30,7 +30,7 @@ class OrdersController extends Controller
         return view('orders.index', [
             'orders' => Order::whereUserId(auth()->id())
                 ->join('products', 'orders.product_id', '=', 'products.id')
-                ->join('inventory', 'inventory.product_id', '=', 'products.id')
+                ->join('inventory', 'orders.inventory_id', '=', 'inventory.id')
                 ->filter($filters)
                 ->filterLike($filterLike)
                 ->orderBy('name')

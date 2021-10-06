@@ -19,6 +19,7 @@ class OrderImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChun
     {
         return (new Order([
             'product_id' => $row['product_id'],
+            'inventory_id' => $row['inventory_id'],
             'street_address' => $row['street_address'],
             'apartment' => $row['apartment'],
             'city' => $row['city'],
