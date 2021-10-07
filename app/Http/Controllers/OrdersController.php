@@ -34,7 +34,7 @@ class OrdersController extends Controller
                 ->filter($filters)
                 ->filterLike($filterLike)
                 ->orderBy('name')
-                ->paginate()
+                ->paginate(env('PAGINATION_PER_PAGE')) // TODO: should be routed to a config
         ]);
     }
 
